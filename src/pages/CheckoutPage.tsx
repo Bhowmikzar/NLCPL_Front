@@ -85,10 +85,12 @@ const CheckoutPage = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            region: isIndia ? "IN" : "OUT",
+            // region: isIndia ? "IN" : "OUT",
+            region: "US",
 
             amount: getDiscountedPrice(),
-            currency: isIndia ? "INR" : "USD",
+            // currency: isIndia ? "INR" : "USD",
+            currency: "USD",
             course: course.shortTitle,
           }),
         }

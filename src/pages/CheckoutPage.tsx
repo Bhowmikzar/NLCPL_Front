@@ -18,7 +18,6 @@ import {
   Award,
   ExternalLink,
 } from "lucide-react";
-const BACKEND_URL = "http://localhost:5000";
 
 const CheckoutPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -79,14 +78,15 @@ const CheckoutPage = () => {
 
     try {
       const res = await fetch(
-        "https://YOUR_RENDER_BACKEND_URL/api/payment/initiate",
+        `${import.meta.env.VITE_API_BASE_URL}/api/payment/initiate`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            region: isIndia ? "IN" : "US",
+            region: isIndia ? "IN" : "OUT",
+
             amount: getDiscountedPrice(),
             currency: isIndia ? "INR" : "USD",
             course: course.shortTitle,
